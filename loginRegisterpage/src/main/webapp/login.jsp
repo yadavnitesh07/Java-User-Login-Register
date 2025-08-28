@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<%@ page import="java.sql.*, com.DB.DBConnect" %>
+<%@ page import="java.sql.*, com.DB.DBConnect"%>
 
-	
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -56,7 +56,7 @@
 
 	<!--  navbar end  -->
 
-	
+
 
 	<!-- login form start-->
 
@@ -68,6 +68,20 @@
 						<i class="	fa fa-user-o fa-2x"></i>
 						<h5>Login Page</h5>
 					</div>
+
+
+					<%
+					String logoutMSG = (String) session.getAttribute("logout-msg");
+					if (logoutMSG != null) {
+					%>
+					<div class="alert alert-success" role="alert"><%=logoutMSG%></div>
+					<%
+					session.removeAttribute("logout-msg");
+					}
+					%>
+
+
+
 					<div class="card-body">
 
 						<form action="loginServlet" method="post">
@@ -75,13 +89,14 @@
 							<div class="form-group">
 								<label for="exampleInputEmail1">Email address</label> <input
 									type="email" class="form-control" id="exampleInputEmail1"
-									aria-describedby="emailHelp" placeholder="Enter email" name="email" >
+									aria-describedby="emailHelp" placeholder="Enter email"
+									name="email">
 
 							</div>
 							<div class="form-group">
 								<label for="exampleInputPassword1">Password</label> <input
 									type="password" class="form-control" id="exampleInputPassword1"
-									placeholder="Enter Password" name="password" >
+									placeholder="Enter Password" name="password">
 							</div>
 
 							<button type="submit"
